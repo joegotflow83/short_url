@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Convert Your URL{% endblock title %}
+
+{% block content %}
+
+<h2 class="center-align">Enter Your URL To Transform</h2>
+<h3 class="center-align">A default has been provided for you</h3>
+<form method="post" action="/converter/">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Transform!" class="waves-effect waves-light btn">
+</form>
+<br>
+<h3>Check out what everyone else has transformed!</h3>
+{% for user in users  %}
+  <h4>User: {{ user.user.username}}</h4>
+  <p>Url: {{ user.url }}</p>
+  <p>Short Url: {{ user.short }}</p>
+  <p>Description: {{ user.description }}</p>
+  <em>Created: {{ user.created }}</em>
+{% endfor %}
+{% endblock %}

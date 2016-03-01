@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Convert Your URL{% endblock title %}
+
+{% block content %}
+
+<h2 class="center-align">Enter Your URL To Transform</h2>
+<form method="post" action="/converter/">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Transform!" class="waves-effect waves-light btn">
+</form>
+
+{% endblock %}
