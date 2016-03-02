@@ -10,14 +10,17 @@
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Transform!" class="waves-effect waves-light btn">
+  <p class="center-align">Try Typing a slash after the 8000 in the url to test your url also!</p>
+  <p class="center-align">Example: localhost:8000/(your new url)</p>
 </form>
 <br>
 <h3>Check out what everyone else has transformed!</h3>
 {% for user in users  %}
   <h4>User: {{ user.user.username}}</h4>
   <p>Url: {{ user.url }}</p>
-  <p>Short Url: {{ user.short }}</p>
+  <p>Short Url: <a href="{{ user.url }}">{{ user.short }}</a></p>
   <p>Description: {{ user.description }}</p>
   <em>Created: {{ user.created }}</em>
 {% endfor %}
+
 {% endblock %}

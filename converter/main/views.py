@@ -5,8 +5,9 @@ from django.views.generic.list import ListView
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.utils.datetime_safe import datetime
 
-from .models import URL
+from .models import URL, Click
 from .forms import URLForm, UserForm
 
 
@@ -67,6 +68,7 @@ class ConverterView(View):
             data = form.save(commit=False)
             data.user = request.user
             data.save()
+            Click.objects.create(bookmark=URL(data.pk), accessed=datetime.now())
             return redirect(reverse('converter'))
 
     def get(self, request):
@@ -83,6 +85,12 @@ class URLView(View):
     def get(self, request, url):
         """Redirect user to their url"""
         new_url = get_object_or_404(URL, short=url)
-        new_url.count += 1
-        new_url.save()
+        update_click = Click.objects.update(bookmark=new_url, accessed=datetime.now())
+        update_click.save()
         return redirect(new_url.url)
+
+
+class BookmarkList(ListView):
+
+
+    model = Click

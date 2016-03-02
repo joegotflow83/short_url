@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}URL List{% endblock title %}
+
+{% block content %}
+
+<h2>URL List and Last Accessed List:</h2>
+{% for url in object_list %}
+  <p>URL: {{ url.bookmark.url }}</p>
+  <p>Last Accessed: <em>{{ url.accessed }}</em></p>
+  <br>
+  <br>
+{% endfor %}
+
+{% endblock %}

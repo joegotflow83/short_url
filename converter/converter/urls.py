@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^register/', views.RegisterView.as_view(), name='register'),
     url(r'^converter/', views.ConverterView.as_view(), name='converter'),
     url(r'^logout/', views.AuthLogout.as_view(), name='logout'),
-    url(r'^(?P<url>\w+)/$', views.URLView.as_view(), name='url')
+    url(r'^url_list/$', views.BookmarkList.as_view(), name='url_list'),
+    url(r'^(?P<url>\w+)/$', views.URLView.as_view(), name='url'),
 ]

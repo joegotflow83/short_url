@@ -24,3 +24,22 @@ class URL(models.Model):
     def __str__(self):
         """Prettify output"""
         return self.url
+
+    class Meta:
+
+
+        ordering = ['-created']
+
+
+class Click(models.Model):
+
+
+    bookmark = models.ForeignKey(URL)
+    accessed = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+
+
+        ordering = ['-accessed']
+
