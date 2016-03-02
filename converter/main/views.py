@@ -86,7 +86,6 @@ class URLView(View):
         """Redirect user to their url"""
         new_url = get_object_or_404(URL, short=url)
         update_click = Click.objects.update(bookmark=new_url, accessed=datetime.now())
-        update_click.save()
         return redirect(new_url.url)
 
 

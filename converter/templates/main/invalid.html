@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}Invalid Credentials{% endblock title %}
+
+{% block content %}
+<h2>Invalid Credentials! Try Again</h2>
+<a href="{% url 'login' %}" class="waves-effect waves-light btn">Go Back</a>
+{% endblock  %}
