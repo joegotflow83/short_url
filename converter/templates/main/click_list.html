@@ -7,7 +7,7 @@
 <h2>URL List and Last Accessed List:</h2>
 {% for url in object_list %}
   <p>URL: {{ url.bookmark.url }}</p>
-  <p>Last Accessed: <em>{{ url.accessed }}</em></p>
+  <p>Last Accessed From URL: <em>{{ url.accessed }}</em></p>
   <br>
   <br>
 {% endfor %}
